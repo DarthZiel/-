@@ -19,8 +19,9 @@ from Book.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Book.urls')),
-    path('api/apoquestion/', GetQuestion.as_view()),
+    path('api/question/', GetQuestion.as_view()),
     path('api/answer/', QuestionAnswer.as_view()),
     path('api/answerlist/', Answers.as_view()),
     path('api/choice/', Choices.as_view()),
+    path('api/topiclist/',TopicList.as_view()),
 ]

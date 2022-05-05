@@ -7,7 +7,7 @@ class ChoiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Choice
-        fields = ['pk', 'title', 'points', 'percent']
+        fields = ['pk', 'title', 'points']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ['pk', 'title', 'choices']
-
+        
 
 class AnswerSerializer(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
@@ -33,8 +33,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 class AnswerListSerializer(serializers.ModelSerializer):
     user = UserSerializer()
-    question = QuestionSerializer
-    choice = ChoiceSerializer
+    question = QuestionSerializer()
+    choice = ChoiceSerializer()
     class Meta:
         model = Answer
         fields = "__all__"

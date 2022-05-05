@@ -7,6 +7,7 @@ class User(AbstractUser):
     fio = models.CharField(max_length=100, blank=True)
     class_title = models.CharField(max_length=30, blank=True)
 
+
 class Topic(models.Model):
     title = models.CharField(max_length=100, verbose_name="Тема")
     def __str__(self):
