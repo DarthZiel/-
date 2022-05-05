@@ -9,7 +9,7 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.register(Topic)
 
-admin.site.register(Theory)
+
 admin.site.register(Question)
 admin.site.register(Choice)
 admin.site.register(Answer)

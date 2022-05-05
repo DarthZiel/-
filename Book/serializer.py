@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Answer, Question, Choice, User, Topic, Theory
+from .models import Question, Choice, User, Topic, Results
 
 
 class ChoiceSerializer(serializers.ModelSerializer):
@@ -16,37 +16,26 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ['pk', 'title', 'choices']
-        
 
-class AnswerSerializer(serializers.ModelSerializer):
-    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
-    question = serializers.SlugRelatedField(slug_field='title',queryset= Question.objects.all())
-    choice = serializers.SlugRelatedField(slug_field='title', queryset= Choice.objects.all())
-    class Meta:
-        model = Answer
-        fields = ['user','question','choice']
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
 
 
-class AnswerListSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-    question = QuestionSerializer()
-    choice = ChoiceSerializer()
-    class Meta:
-        model = Answer
-        fields = "__all__"
 
 
 # Список тем
-class TopicSerializer(serializers.Serializer):
+class TopicSerializer(serializers.ModelSerializer):
+    questions = QuestionSerializer(many=True, source='question_set', )
     class Meta:
         model = Topic
-        fields = "__all__"
+        fields = ['title','questions']
 
-class TheorySerializer(serializers.Serializer):
+
+class ResultsSerializer(serializers.ModelSerializer):
+    topic = serializers.SlugRelatedField(slug_field='title', queryset=Topic.objects.all())
     class Meta:
-        model = Theory
-        fields = "__all__"
+        model = Results
+        fields = ['user', 'topic','points']
