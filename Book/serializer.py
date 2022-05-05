@@ -31,7 +31,7 @@ class TopicSerializer(serializers.ModelSerializer):
     questions = QuestionSerializer(many=True, source='question_set', )
     class Meta:
         model = Topic
-        fields = ['title','questions']
+        fields = ['title','content','file','questions']
 
 
 class ResultsSerializer(serializers.ModelSerializer):
