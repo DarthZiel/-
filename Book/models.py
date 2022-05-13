@@ -7,7 +7,7 @@ class User(AbstractUser):
     fio = models.CharField(max_length=100, blank=True)
     class_title = models.CharField(max_length=30, blank=True)
     is_student = models.BooleanField(default=True)
-
+    REQUIRED_FIELDS = ['fio', 'class_title', 'is_student']
 
 
 class Topic(models.Model):
