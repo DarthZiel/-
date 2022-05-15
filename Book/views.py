@@ -13,7 +13,7 @@ def index(request):
 class UserList(ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
+    permission_classes = (IsAuthenticated,)
 
 class TopicList(ListAPIView):
     queryset = Topic.objects.all()

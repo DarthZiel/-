@@ -18,14 +18,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include,re_path
 from Book.views import *
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Book.urls')),
     path('api/topiclist/',TopicList.as_view()),
     path('api/results/', ResultsPost.as_view()),
     path('api/users/', UserList.as_view()),
-    path('api/auth/', include('djoser.urls')),  # new
-    re_path(r'^auth/', include('djoser.urls.authtoken')),  # new
+    path('api/auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
