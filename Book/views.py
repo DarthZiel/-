@@ -25,8 +25,8 @@ class TopicList(ListAPIView):
 class ResultsPost(ListCreateAPIView):
     queryset = Results.objects.all()
     serializer_class = ResultsSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     filter_backends = [SearchFilter]
-    search_fields = ['user','topic']
+    search_fields = ['user__name','topic__name']
 
 

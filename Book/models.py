@@ -48,3 +48,4 @@ class Results(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     points = models.IntegerField()
     topic = models.ForeignKey(Topic, on_delete=models.DO_NOTHING)
+    time = models.CharField(max_length=100)
