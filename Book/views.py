@@ -26,7 +26,7 @@ class ResultsPost(ListCreateAPIView):
     queryset = Results.objects.all()
     serializer_class = ResultsSerializer
     # permission_classes = (IsAuthenticated,)
-    filter_backends = [SearchFilter]
-    search_fields = ['user','topic','points']
+    filter_backends = (SearchFilter,)
+    search_fields = ['user__username','topic__title','points']
 
 
