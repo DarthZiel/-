@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView, CreateAPIView,ListCreateAPIView
 from rest_framework.views import APIView
 from .models import *
+from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from django.http import HttpResponse
 from rest_framework.permissions import IsAuthenticated
@@ -21,7 +22,11 @@ class TopicList(ListAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-class ResultsPost(CreateAPIView):
+class ResultsPost(ListCreateAPIView):
     queryset = Results.objects.all()
     serializer_class = ResultsSerializer
     permission_classes = (IsAuthenticated,)
+    filter_backends = [SearchFilter]
+    search_fields = ['user','topic']
+
+

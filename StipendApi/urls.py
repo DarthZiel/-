@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('Book.urls')),
     path('api/topiclist/',TopicList.as_view()),
     path('api/results/', ResultsPost.as_view()),
+
     path('api/users/', UserList.as_view()),
     path('api/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
