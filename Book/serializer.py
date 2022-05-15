@@ -39,4 +39,4 @@ class ResultsSerializer(serializers.ModelSerializer):
     topic = serializers.SlugRelatedField(slug_field='title', queryset=Topic.objects.all())
     class Meta:
         model = Results
-        fields = ['user', 'topic','points']
+        fields = ['user', 'topic','points','time']
