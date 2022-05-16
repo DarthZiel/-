@@ -14,7 +14,7 @@ def index(request):
 class UserList(ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
 class TopicList(ListAPIView):
     queryset = Topic.objects.all()
@@ -25,7 +25,7 @@ class TopicList(ListAPIView):
 class ResultsPost(ListCreateAPIView):
     queryset = Results.objects.all()
     serializer_class = ResultsSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     filter_backends = (SearchFilter,)
     search_fields = ['user__username','topic__title','points']
 

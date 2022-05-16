@@ -35,7 +35,7 @@ class TopicSerializer(serializers.ModelSerializer):
 
 
 class ResultsSerializer(serializers.ModelSerializer):
-    user = serializers.SlugRelatedField(slug_field='username', queryset= User.objects.all())
+    user = serializers.SlugRelatedField(slug_field='fio', queryset= User.objects.all())
     topic = serializers.SlugRelatedField(slug_field='title', queryset=Topic.objects.all())
     class Meta:
         model = Results
