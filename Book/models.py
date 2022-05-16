@@ -8,7 +8,9 @@ class User(AbstractUser):
     class_title = models.CharField(max_length=30, blank=True)
     is_student = models.BooleanField(default=True)
     REQUIRED_FIELDS = ['fio', 'class_title', 'is_student']
-
+    
+    def __str__(self):
+        return self.fio
 
 class Topic(models.Model):
     title = models.CharField(max_length=100, verbose_name="Тема")
